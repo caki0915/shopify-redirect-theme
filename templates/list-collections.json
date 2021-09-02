@@ -1,13 +1,8 @@
 {
   "sections": {
     "main": {
-      "type": "main-list-collections",
-      "settings": {
-        "image_ratio": "square"
-      }
+      "type": "main-article"
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }
