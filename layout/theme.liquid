@@ -6,13 +6,27 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="" /> 
   <title>{{ page_title }}</title>
+
+  {% if content_for_header contains "previewBarInjector.init();" %}
   <script type="text/javascript">
-  var loc = '{{ settings.url }}' + window.location.pathname;
-  window.location.replace(loc);
-  </script>
-  <noscript>
-    <meta http-equiv="refresh" content="0; URL={{ settings.url }}" />
-  </noscript>
+    var loc = '{{ settings.url }}' + window.location.pathname;
+    document.getElementById('main').appendChild('<p>Preview Mode: ' + loc + '</p>')
+  </script>  
+  {% elsif content_for_header contains "Shopify.designMode" %}
+    <script type="text/javascript">
+    var loc = '{{ settings.url }}' + window.location.pathname;
+    document.getElementById('main').appendChild('<p>Preview Mode: ' + loc + '</p>')
+  </script>  
+  {% else %}
+    <script type="text/javascript">
+      var loc = '{{ settings.url }}' + window.location.pathname;
+      window.location.replace(loc);
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; URL={{ settings.url }}" />
+    </noscript>
+  {% endif %}
+  
   {{ content_for_header }}
   <style type="text/css">
   .loader,
@@ -59,9 +73,8 @@
 
   </style>
 </head>
-
 <body>
-  <main role="main" tabindex="-1">
+  <main id="main" role="main" tabindex="-1">
     <div class="loader">Loading...</div>
     {{ content_for_layout }}
   </main>
