@@ -7,25 +7,9 @@
   <meta name="theme-color" content="" /> 
   <title>{{ page_title }}</title>
 
-  {% if content_for_header contains "previewBarInjector.init();" %}
-  <script type="text/javascript">
-    var loc = '{{ settings.url }}' + window.location.pathname;
-    document.getElementById("main-message").innerHTML = '<p>Preview Mode: ' + loc + '</p>';
-  </script>  
-  {% elsif content_for_header contains "Shopify.designMode" %}
-     <script type="text/javascript">
-    var loc = '{{ settings.url }}' + window.location.pathname;
-    document.getElementById("main-message").innerHTML = '<p>Preview Mode: ' + loc + '</p>';
-  </script>   
-  {% else %}
-    <script type="text/javascript">
-      var loc = '{{ settings.url }}' + window.location.pathname;
-      window.location.replace(loc);
-    </script>
-    <noscript>
+  <noscript>
       <meta http-equiv="refresh" content="0; URL={{ settings.url }}" />
-    </noscript>
-  {% endif %}
+  </noscript>
   
   {{ content_for_header }}
   <style type="text/css">
@@ -79,5 +63,18 @@
     <div class="loader">Loading...</div>
     {{ content_for_layout }}
   </main>
+
+  <script type="text/javascript">
+    {% if content_for_header contains "previewBarInjector.init();" %}
+      var loc = '{{ settings.url }}' + window.location.pathname;
+      document.getElementById("main-message").innerHTML = '<p>Preview Mode: ' + loc + '</p>';
+    {% elsif content_for_header contains "Shopify.designMode" %}
+      var loc = '{{ settings.url }}' + window.location.pathname;
+      document.getElementById("main-message").innerHTML = '<p>Preview Mode: ' + loc + '</p>';
+    {% else %}
+      var loc = '{{ settings.url }}' + window.location.pathname;
+      window.location.replace(loc);
+    {% endif %}
+  </script>
 </body>
 </html>
