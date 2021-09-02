@@ -1,8 +1,14 @@
 {
-  "current": "Default",
+  "current": {
+    "url": "https:\/\/northeden.co",
+    "color_primary": "#447951",
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
     "Default": {
-      "url": "https://google.com",
+      "url": "https:\/\/google.com",
       "color_primary": "#121212"
     }
   }
