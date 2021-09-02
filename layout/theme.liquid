@@ -10,13 +10,13 @@
   {% if content_for_header contains "previewBarInjector.init();" %}
   <script type="text/javascript">
     var loc = '{{ settings.url }}' + window.location.pathname;
-    document.getElementById('main').appendChild('<p>Preview Mode: ' + loc + '</p>')
+    document.getElementById("main-message").innerHTML = '<p>Preview Mode: ' + loc + '</p>';
   </script>  
   {% elsif content_for_header contains "Shopify.designMode" %}
-    <script type="text/javascript">
+     <script type="text/javascript">
     var loc = '{{ settings.url }}' + window.location.pathname;
-    document.getElementById('main').appendChild('<p>Preview Mode: ' + loc + '</p>')
-  </script>  
+    document.getElementById("main-message").innerHTML = '<p>Preview Mode: ' + loc + '</p>';
+  </script>   
   {% else %}
     <script type="text/javascript">
       var loc = '{{ settings.url }}' + window.location.pathname;
@@ -75,6 +75,7 @@
 </head>
 <body>
   <main id="main" role="main" tabindex="-1">
+    <div id="main-message"></div>
     <div class="loader">Loading...</div>
     {{ content_for_layout }}
   </main>
