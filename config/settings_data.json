@@ -2,6 +2,9 @@
   "current": {
     "url": "https:\/\/northeden.co",
     "color_primary": "#447951",
+    "checkout_logo_image": "shopify:\/\/shop_images\/North_Eden_Logo_Landscape.png",
+    "checkout_accent_color": "#212223",
+    "checkout_button_color": "#059669",
     "content_for_index": [
 
     ]
