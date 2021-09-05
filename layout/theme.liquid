@@ -73,7 +73,8 @@
       document.getElementById("main-message").innerHTML = '<p>Preview Mode: ' + loc + '</p>';
     {% else %}
       var loc = '{{ settings.url }}' + window.location.pathname;
-      window.location.replace(loc);
+      // window.location.replace(loc);
+      
     {% endif %}
   </script>
 </body>
